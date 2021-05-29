@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+
 import './style.css';
 
-export const Joke = (props) => {
-  const [like, setLike] = useState(0);
-  const [dislike, setDislike] = useState(0);
+export const Joke = ({ userAvatar, userName, text, likes, dislikes }) => {
+  const [like, setLike] = useState(likes);
+  const [dislike, setDislike] = useState(dislikes);
 
   const handleLike = () => {
     setLike(like + 1);
@@ -17,18 +18,11 @@ export const Joke = (props) => {
     <div className="joke">
       <div className="joke__body">
         <div className="joke__user">
-          <img
-            className="user-avatar"
-            src="https://raw.githubusercontent.com/Czechitas-podklady-WEB/dadjokes/main/users/user01.png"
-          />
-          <p className="user-name">Neroxx</p>
+          <img className="user-avatar" src={userAvatar} />
+          <p className="user-name">{userName}</p>
         </div>
 
-        <p className="joke__text">
-          The secret service isn't allowed to yell "Get down!" anymore when the
-          president is about to be attacked. Now they have to yell "Donald,
-          duck!"
-        </p>
+        <p className="joke__text">{text}</p>
       </div>
       <div className="joke__likes">
         <button
